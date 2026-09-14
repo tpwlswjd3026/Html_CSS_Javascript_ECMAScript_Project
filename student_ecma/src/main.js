@@ -101,7 +101,7 @@ studentForm.addEventListener("submit", function (e) {
 });
 
 cancelButton.addEventListener('click', function() {
-    studentForm.reset(); // 취소 버튼 숨기기
+    studentForm.reset();
 });
 
 // 학생 수정전에 데이터를 로드하는 함수
@@ -123,15 +123,13 @@ async function editStudent(studentId) {
         studentForm.email.value = data.detail?.email || '';
         studentForm.dateOfBirth.value = data.detail?.dateOfBirth || '';
 
-
         // 수정 모드로 설정
         editingStudentId = studentId;
         submitButton.textContent = '학생 수정';
         studentForm.scrollIntoView({ behavior: 'smooth' });
-        cancelButton.style.display = 'inline-block'; // 취소 버튼 표시
+        cancelButton.style.display = 'inline-block';
     } catch (error) {
         console.error('Error:', error.message);
-        
         showError(error.message);
     }
 };
